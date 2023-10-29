@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import errorMiddleware from "./middlewares/error.js";
 
 const app = express();
 dotenv.config({ path: `.env` });
@@ -11,10 +12,11 @@ app.get("/", (req, res) => {
 });
 
 import author from "./routes/author.routes.js";
-import errorMiddleware from "./middlewares/error.js";
+import book from "./routes/book.routes.js";
 
 const routePrefix = "/api/v1";
 app.use(routePrefix, author);
+app.use(routePrefix, book);
 
 app.use(errorMiddleware);
 
