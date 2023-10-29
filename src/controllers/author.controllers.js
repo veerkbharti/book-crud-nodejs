@@ -19,8 +19,37 @@ export const getAllAuthors = catchAsyncErrors(async (req, res, next) => {
 export const getSingleAuthor = catchAsyncErrors(async (req, res, next) => {
   const author = await Author.findById(req.params.id);
 
-  if (!author)
-    return next(new ErrorHandler("Author not found", 404))
+  if (!author) return next(new ErrorHandler("Author not found", 404));
 
-    res.status(200).json({ success: true, author });
+  res.status(200).json({ success: true, author });
+});
+
+export const updateAuthor = catchAsyncErrors(async (req, res, next) => {
+  const authorId = req.params.id;
+  let author = await Author.findById(authorId);
+
+  if (!author) return next(new ErrorHandler("Author not found", 404));
+
+  author = await Author.findByIdAndUpdate(authorId, req.body, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+
+  res
+    .status(200)
+    .json({ success: true, message: "Author updated succesfully", author });
+});
+
+export const deleteAuthor = catchAsyncErrors(async (req, res, next) => {
+  const authorId = req.params.id;
+  let author = await Author.findById(authorId);
+
+  if (!author) return next(new ErrorHandler("Author not found", 404));
+
+  author = await Author.findByIdAndDelete(authorId);
+
+  res
+    .status(200)
+    .json({ success: true, message: "Author deleted successfully", author });
 });
