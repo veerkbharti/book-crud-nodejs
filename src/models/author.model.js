@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const authorSchema = Schema(
+const authorSchema = new Schema(
   {
     firstName: {
       type: String,
