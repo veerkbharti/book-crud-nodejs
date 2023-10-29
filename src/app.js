@@ -15,4 +15,6 @@ import author from "./routes/author.routes.js";
 const routePrefix = "/api/v1";
 app.use(routePrefix, author);
 
+app.use(errorMiddleware);
+
 export default app;
