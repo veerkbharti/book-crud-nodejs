@@ -29,12 +29,18 @@ A RESTful API for managing books.
 
 ### Installation
 
-```bash
+``````
 git clone https://github.com/veerkbharti/book-management-api.git
+``````
+``````
 cd book-management-api
+``````
+``````
 npm install
+``````
+``````
 npm run dev or npm start
-```
+``````
 
 ## Deployment on VPS Server
 
