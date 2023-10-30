@@ -26,7 +26,6 @@ A RESTful API for managing books.
 
 - Node.js
 - npm
-- MongoDB
 
 ### Installation
 
@@ -35,4 +34,53 @@ git clone https://github.com/veerkbharti/book-management-api.git
 cd book-management-api
 npm install
 npm run dev or npm start
+```
 
+## Deployment on VPS Server
+
+### Connection
+``````
+ssh root@<server ip address>
+``````
+
+### Uploading Apps Using Git
+``````
+apt install git
+``````
+``````
+git clone https://github.com/veerkbharti/book-management-api.git
+``````
+
+### Setup the project
+``````
+cd book-management-api
+``````
+``````
+npm install
+``````
+### Run the project
+``````
+apt install nodejs
+``````
+``````
+apt install npm
+``````
+``````
+npm i -g pm2
+``````
+``````
+pm2 start server.js
+``````
+### Add port
+``````
+sudo iptables -L
+``````
+``````
+sudo iptables -A INPUT -p tcp --dport 4000 -j ACCEPT
+``````
+``````
+sudo apt install netfilter-persistent
+``````
+``````
+sudo netfilter-persistent save
+``````
